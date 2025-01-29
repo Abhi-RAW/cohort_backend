@@ -3,20 +3,6 @@ const {passwordHandler} = require("../utils/passwordHandler.js");
 const {generateToken} = require("../utils/tokenHandler.js");
 const {catchErrorHandler} = require("../utils/catchErrorHandler.js");
 const {cloudinaryInstance} = require("../config/cloudinary.js");
-//const crypto = require("crypto");
-//const nodemailer = require("nodemailer");
-
-// Config node env
-//const NODE_ENV = process.env.NODE_ENV;
-
-// Config nodemailer
-//const transporter = nodemailer.createTransport({
- // service: process.env.EMAIL_SERVICE,
-  //auth: {
-    //user: process.env.EMAIL_USER,
-    //pass: process.env.EMAIL_PASS,
-  //},
-//});
 
 // Seller signup
 const sellerSignup = async (req, res) => {
@@ -382,48 +368,6 @@ const deleteSeller = async (req, res) => {
   }
 };
 
-// Forgot password
-//const sellerForgotPassword = async (req, res) => {
-  // Get data request body
-  //const { email } = req.body;
-  //try {
-    // Find seller found
-    //const seller = await Seller.findOne({ email });
-
-    // Handle seller not found
-    //if (!seller) {
-      //return res.status(404).json({ message: "Seller not found" });
-    //}
-
-    // Create reset token
-    //const resetToken = crypto.randomBytes(32).toString("hex");
-
-    // Assign to database variable
-    //seller.resetToken = resetToken;
-
-    // Set token expires
-    //seller.resetTokenExpires = Date.now() + 10 * 60 * 1000;
-
-    // Save to database
-    //await seller.save();
-
-    // Set rest link
-    //const resetLink = `${process.env.CORS}/seller/reset-password/${resetToken}`;
-    // Set up mail
-    //await transporter.sendMail({
-    //  from: process.env.EMAIL_USER,
-     // to: email,
-      //subject: "Password reset request",
-      //text: `Click the link to reset your password: ${resetLink}`,
-    //});
-    // Send response to frontend
-    //res.status(200).json({ message: "Reset email send!" });
-  //} catch (error) {
-    // Handle catch error
-    //catchErrorHandler(res, error);
- // }
-//};
-
 // Reset password
 const sellerResetPassword = async (req, res) => {
   // Get data from request body
@@ -462,107 +406,6 @@ const sellerResetPassword = async (req, res) => {
     catchErrorHandler(res, error);
   }
 };
-
-// Search active sellers
-//const searchActiveSellers = async (req, res) => {
-  //try {
-    // Get search value
-    //const { searchResult } = req.body;
-
-    // Check if search value
-    //if (searchResult && searchResult.trim() !== "") {
-      // Search for active sellers
-      //const activeSellers = await Seller.find({
-        //isActive: true,
-        //$or: [
-          //{ name: { $regex: searchResult, $options: "i" } },
-          //{ email: { $regex: searchResult, $options: "i" } },
-        //],
-      //});
-
-      // Handle search query
-      //if (!activeSellers || activeSellers.length === 0) {
-        //return res
-          //.status(404)
-          //.json({ message: "No matching active sellers found in search" });
-      //}
-      // Send response to frontend
-      //return res.status(200).json({
-        //message: "Active sellers found",
-        //data: activeSellers,
-      //});
-    //} else {
-      // If no search value, return all active sellers
-      //const activeSellers = await Seller.find({ isActive: true });
-
-      // Handle data not found
-      //if (!activeSellers || activeSellers.length === 0) {
-        //return res
-          //.status(404)
-          //.json({ message: "No search active sellers found" });
-      //}
-
-      // Send response to frontend
-      //return res.status(200).json({
-        //message: "No search active sellers fetched successfully",
-        //data: activeSellers,
-      //});
-    //}
-  //} catch (error) {
-    // Handle catch error
-    //catchErrorHandler(res, error);
-  //}
-//};
-
-// Search inactive sellers
-//const searchInactiveSellers = async (req, res) => {
-  //try {
-    // Get search value
-    //const { searchResult } = req.body;
-
-    // Check if search value
-    //if (searchResult && searchResult.trim() !== "") {
-      // Search for inactive sellers by mongodb regular expression
-      //const inactiveSellers = await Seller.find({
-        //isActive: false,
-        //$or: [
-          //{ name: { $regex: searchResult, $options: "i" } },
-          //{ email: { $regex: searchResult, $options: "i" } },
-        //],
-      //});
-      // Handle data not found
-      //if (!inactiveSellers || inactiveSellers.length === 0) {
-        //return res
-          //.status(404)
-          //.json({ message: "No matching inactive sellers found in search" });
-      //}
-      // Send response to frontend
-      //return res.status(200).json({
-        //message: "Inactive sellers found",
-        //data: inactiveSellers,
-      //});
-    //} else {
-      // If no search value, return all inactive sellers
-      //const inactiveSellers = await Seller.find({ isActive: false });
-      // Handle no data found
-      //if (!inactiveSellers || inactiveSellers.length === 0) {
-        //return res
-          //.status(404)
-          //.json({ message: "No search inactive sellers found" });
-      //}
-
-      // Send response to frontend
-      //return res.status(200).json({
-        //message: "No search inactive sellers fetched successfully",
-        //data: inactiveSellers,
-      //});
-    //}
-  //} catch (error) {
-    // Handle catch error
-    //catchErrorHandler(res, error);
-  //}
-//};
-
 // Export all functions
 module.exports = {
   sellerSignup,
@@ -578,8 +421,5 @@ module.exports = {
   getActiveSellers,
   activateSeller,
   deleteSeller,
-  //sellerForgotPassword,
   sellerResetPassword,
-  //searchActiveSellers,
-  //searchInactiveSellers,
 };
