@@ -1,19 +1,9 @@
-//const crypto = require("crypto");
-//const nodemailer = require("nodemailer");
 const { catchErrorHandler } = require("../utils/catchErrorHandler.js");
 const { generateToken } = require("../utils/tokenHandler.js");
 const { Seller } = require("../models/sellerModel.js");
 const { passwordHandler } = require("../utils/passwordHandler.js");
 const { cloudinaryInstance } = require("../config/cloudinary.js");
 
-// Config nodemailer
-//const transporter = nodemailer.createTransport({
- // service: process.env.EMAIL_SERVICE,
-  //auth: {
-    //user: process.env.EMAIL_USER,
-    //pass: process.env.EMAIL_PASS,
-  //},
-//});
 
 // Admin signup
 const adminSignup = async (req, res) => {
@@ -219,50 +209,6 @@ const updateAdminProfile = async (req, res) => {
   }
 };
 
-// Forgot password
-//const adminForgotPassword = async (req, res) => {
-  // Get admin email from body
-  //const { email } = req.body;
-  //try {
-    // Find admin found
-    //const admin = await Seller.findOne({ email, role: "admin" });
-
-    // Handle admin not found
-    //if (!admin) {
-      //return res.status(404).json({ message: "Admin not found" });
-    //}
-
-    // Create reset token
-    //const resetToken = crypto.randomBytes(32).toString("hex");
-
-    // Assign to database variable
-    //admin.resetToken = resetToken;
-
-    // Set token expires
-    //admin.resetTokenExpires = Date.now() + 10 * 60 * 1000;
-
-    // Save to database
-    //await admin.save();
-
-    // Set rest link
-    //const resetLink = `${process.env.CORS}/admin/reset-password/${resetToken}`;
-
-    // Setup mail
-    //await transporter.sendMail({
-      //from: process.env.EMAIL_USER,
-      //to: email,
-      //subject: "Password reset request",
-      //text: `Click the link to reset your password: ${resetLink}`,
-    //});
-
-    // Send response to frontend
-    //res.status(200).json({ message: "Reset email send!" });
-  //} catch (error) {
-    // Handle catch error
-    //catchErrorHandler(res, error);
-  //}
-//};
-
 // Reset password
 const adminResetPassword = async (req, res) => {
   // Get data from request body
@@ -348,7 +294,6 @@ module.exports = {
   adminLogin,
   adminProfile,
   updateAdminProfile,
-  //adminForgotPassword,
   adminResetPassword,
   adminDetails,
   adminLogout,
