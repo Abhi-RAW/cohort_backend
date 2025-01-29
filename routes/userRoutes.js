@@ -12,11 +12,8 @@ const {
   activateUser,
   deleteUser,
   getActiveUsers,
- // userForgotPassword,
   userResetPassword,
   userDetails,
- // searchActiveUsers,
- // searchInactiveUsers,
 } = require("../controllers/userControllers.js");
 const { userAuth } = require("../middlewares/userAuth.js");
 const { adminAuth } = require("../middlewares/adminAuth.js");
@@ -68,16 +65,7 @@ userRouter.get('/inactive-users', adminAuth, getInactiveUsers);
 // Display active users
 userRouter.get('/active-users', adminAuth, getActiveUsers);
 
-// Forgot password
-//userRouter.post("/forgot-password", userForgotPassword);
-
 // Reset password
 userRouter.post("/reset-password/:token", userResetPassword);
-
-// Search active users
-//userRouter.post("/search-active-users", adminAuth, searchActiveUsers);
-
-// Search inactive users
-//userRouter.post("/search-inactive-users", adminAuth, searchInactiveUsers);
 
 module.exports = {userRouter};
