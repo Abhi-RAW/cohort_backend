@@ -13,10 +13,7 @@ const {
   sellerDetails,
   getInactiveSellers,
   getActiveSellers,
-  //sellerForgotPassword,
   sellerResetPassword,
-  //searchActiveSellers,
-  //searchInactiveSellers,
 } = require("../controllers/sellerControllers.js");
 const { sellerAuth } = require("../middlewares/sellerAuth.js");
 const { adminAuth } = require("../middlewares/adminAuth.js");
@@ -74,12 +71,6 @@ sellerRouter.get("/inactive-sellers", adminAuth, getInactiveSellers);
 
 // Reset password
 sellerRouter.post("/reset-password/:token", sellerResetPassword);
-
-// Search active sellers
-//sellerRouter.post("/search-active-sellers", adminAuth, searchActiveSellers);
-
-// Search inactive sellers
-//sellerRouter.post("/search-inactive-sellers", adminAuth, searchInactiveSellers);
 
 // Export the router
 module.exports = { sellerRouter };
