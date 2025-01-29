@@ -17,18 +17,6 @@ const {
   getSellerOrderTotalPriceByCategory,
   searchOrders,
   searchSellerOrders,
-//   requestReturn,
-//   handleReturn,
-//   getReturnRequests,
-//   getReturnDetails,
-//   getSellerReturnRequests,
-//   getSellerReturnDetails,
-//   searchReturnRequests,
-//   searchSellerReturnRequests,
-//   getOrdersByReturnStatus,
-//   getSellerOrdersByReturnStatus,
-//   searchOrdersByReturnStatus,
-//   searchSellerOrdersByReturnStatus,
 } = require("../controllers/orderControllers.js");
 
 // Configure router
@@ -82,65 +70,5 @@ orderRouter.post("/search-orders", adminAuth, searchOrders);
 
 // Search seller orders
 orderRouter.post("/search-seller-orders", sellerAuth, searchSellerOrders);
-
-// // Return orders
-// orderRouter.post("/request-return/:orderId", userAuth, requestReturn);
-
-// // Handle return orders
-// orderRouter.post("/handle-return", sellerAuth, handleReturn);
-
-// // Get return request
-// orderRouter.post("/return-requests", adminAuth, getReturnRequests);
-
-// // Get seller return request
-// orderRouter.post(
-//   "/seller-return-requests",
-//   sellerAuth,
-//   getSellerReturnRequests
-// );
-
-// // Get return details
-// orderRouter.get("/return-details/:orderId", adminAuth, getReturnDetails);
-
-// // Get seller return details
-// orderRouter.get(
-//   "/return-details-seller/:orderId",
-//   sellerAuth,
-//   getSellerReturnDetails
-// );
-
-// // Search return requests
-// orderRouter.post("/search-return-requests", adminAuth, searchReturnRequests);
-
-// // Search seller return requests
-// orderRouter.post(
-//   "/search-seller-return-requests",
-//   sellerAuth,
-//   searchSellerReturnRequests
-// );
-
-// // Get return status
-// orderRouter.post("/get-return-status", adminAuth, getOrdersByReturnStatus);
-
-// // Get return status for sellers
-// orderRouter.post(
-//   "/get-return-status-seller",
-//   sellerAuth,
-//   getSellerOrdersByReturnStatus
-// );
-
-// // Search order by return status
-// orderRouter.post(
-//   "/search-order-by-return-status",
-//   adminAuth,
-//   searchOrdersByReturnStatus
-// );
-
-// // Search seller order by return status
-// orderRouter.post(
-//   "/search-seller-order-by-return-status",
-//   sellerAuth,
-//   searchSellerOrdersByReturnStatus
-// );
 
 module.exports = {orderRouter};
