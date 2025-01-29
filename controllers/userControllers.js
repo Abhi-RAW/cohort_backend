@@ -1,19 +1,9 @@
-//const crypto = require("crypto");
-//const nodemailer = require("nodemailer");
+
 const { User } = require("../models/userModel.js");
 const { passwordHandler } = require("../utils/passwordHandler.js");
 const { generateToken } = require("../utils/tokenHandler.js");
 const { catchErrorHandler } = require("../utils/catchErrorHandler.js");
 const { cloudinaryInstance } = require("../config/cloudinary.js");
-
-// Config nodemailer
-//const transporter = nodemailer.createTransport({
- // service: process.env.EMAIL_SERVICE,
-  //auth: {
-  //  user: process.env.EMAIL_USER,
-   // pass: process.env.EMAIL_PASS,
-  //},
-//});
 
 // User signup
 const userSignup = async (req, res) => {
@@ -372,47 +362,6 @@ const getActiveUsers = async (req, res) => {
   }
 };
 
-// Forgot password
-//const userForgotPassword = async (req, res) => {
-  // Get user email from body
-  //const { email } = req.body;
-  //try {
-    // Find user found
-    //const user = await User.findOne({ email });
-    // Handle user not found
-    //if (!user) {
-      //return res.status(404).json({ message: "User not found" });
-    //}
-
-    // Create reset token
-    //const resetToken = crypto.randomBytes(32).toString("hex");
-
-    // Assign to database variable
-    //user.resetToken = resetToken;
-
-    // Set token expires
-    //user.resetTokenExpires = Date.now() + 10 * 60 * 1000;
-
-    // Save to database
-    //await user.save();
-
-    // Set rest link
-    //const resetLink = `${process.env.CORS}/reset-password/${resetToken}`;
-    // Set up mail
-    //await transporter.sendMail({
-      //from: process.env.EMAIL_USER,
-      //to: email,
-      //subject: "Password reset request",
-      //text: `Click the link to reset your password: ${resetLink}`,
-    //});
-    // Send response to frontend
-    //res.status(200).json({ message: "Reset email send!" });
-  //} catch (error) {
-    // Handle catch error
-    //catchErrorHandler(res, error);
-  //}
-//};
-
 // Reset password
 const userResetPassword = async (req, res) => {
   // Get data from request body
@@ -451,103 +400,6 @@ const userResetPassword = async (req, res) => {
   }
 };
 
-// Search active users
-//const searchActiveUsers = async (req, res) => {
-  //try {
-    // Get search value
-   // const { searchResult } = req.body;
-
-    // Check if search value
-    //if (searchResult && searchResult.trim() !== "") {
-      // Search for active users with mongodb regular expression
-      //const activeUsers = await User.find({
-        //isActive: true,
-        //$or: [
-          //{ name: { $regex: searchResult, $options: "i" } },
-          //{ email: { $regex: searchResult, $options: "i" } },
-        //],
-      //});
-      // Handle active users not found
-      //if (!activeUsers || activeUsers.length === 0) {
-       // return res
-        //  .status(404)
-         // .json({ message: "No matching active users found in search" });
-      //}
-      // Send response to frontend
-     // return res.status(200).json({
-       // message: "Active users found",
-       // data: activeUsers,
-     // });
-    //} else {
-      // If no search value, return all active users
-      //const activeUsers = await User.find({ isActive: true });
-      // Handle data not found
-      //if (!activeUsers || activeUsers.length === 0) {
-       // return res
-        //  .status(404)
-         // .json({ message: "No search active users found" });
-      //}
-
-      // Send response to frontend
-     // return res.status(200).json({
-       // message: "No search active users fetched successfully",
-        //data: activeUsers,
-      //});
-    //}
-  //} catch (error) {
-    // Handle catch error
-    //catchErrorHandler(res, error);
-  //}
-//};
-
-// Search inactive users
-//const searchInactiveUsers = async (req, res) => {
-  //try {
-    // Get search value
-    //const { searchResult } = req.body;
-
-    // Check if search value
-    //if (searchResult && searchResult.trim() !== "") {
-      // Search for inactive  users by mongodb regular expression
-      //const inactiveUsers = await User.find({
-        //isActive: false,
-        //$or: [
-          //{ name: { $regex: searchResult, $options: "i" } },
-          //{ email: { $regex: searchResult, $options: "i" } },
-        //],
-      //});
-
-      //if (!inactiveUsers || inactiveUsers.length === 0) {
-        //return res
-          //.status(404)
-          //.json({ message: "No matching inactive users found in search" });
-      //}
-      // Send response to frontend
-      //return res.status(200).json({
-        //message: "Inactive users found",
-        //data: inactiveUsers,
-      //});
-    //} else {
-      // If no search value, return all inactive users
-      //const inactiveUsers = await User.find({ isActive: false });
-      // Handle no data found
-      //if (!inactiveUsers || inactiveUsers.length === 0) {
-        //return res
-          //.status(404)
-          //.json({ message: "No search inactive users found" });
-      //}
-
-      // Send response to frontend
-      //return res.status(200).json({
-        //message: "No search inactive users fetched successfully",
-        //data: inactiveUsers,
-      //});
-    //}
-  //} catch (error) {
-    // Handle catch error
-    //catchErrorHandler(res, error);
-  //}
-//};
 
 // Export all functions
 module.exports = {
@@ -564,9 +416,6 @@ module.exports = {
   activateUser,
   deleteUser,
   getActiveUsers,
-  //userForgotPassword,
   userResetPassword,
-  //searchActiveUsers,
-  //searchInactiveUsers,
 };
 
